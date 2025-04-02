@@ -8,5 +8,5 @@ function CheckAdmin {
 # Check if the script is running with admin privileges
 if (-not (CheckAdmin)) {
     Write-Host "You must run this script as an administrator!" -ForegroundColor Red
-    return
+    exit
 }
