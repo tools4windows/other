@@ -1,5 +1,3 @@
-Write-Host "Credits: Tools4Windows - https://github.com/Tools4Windows" -ForegroundColor Green
-
 # Add daily cleanups at startup
 Import-Module ScheduledTasks
 
